@@ -1,7 +1,8 @@
 import { Stack } from "expo-router";
 import React from "react";
 import { colors } from "@/constants/Colors";
-import { Image, Text, View } from "react-native";
+import { Image, View } from "react-native";
+import { ThemedText } from "@/components/ThemedText";
 
 export default function TabLayout() {
   return (
@@ -24,12 +25,10 @@ export default function TabLayout() {
                   }}
                   style={{ width: 24, height: 24 }}
                 />
-                <Text style={{ color: colors.contentPrimary, fontSize: 18 }}>
-                  {coinName}
-                </Text>
+                <ThemedText style={{ fontSize: 18 }}>{coinName}</ThemedText>
               </View>
             ),
-            headerBackTitle: "Back",
+            headerBackButtonDisplayMode: "minimal",
             headerTintColor: colors.contentPrimary,
             headerStyle: {
               backgroundColor: colors.basePrimary,

@@ -2,6 +2,11 @@ import { Coin } from "@/types/coinListTypes";
 import { FlatList, RefreshControl } from "react-native-gesture-handler";
 import CoinItemSkeleton from "../Skeletons/CoinItemSkeleton/CoinItemSkeleton";
 import CoinItemSkeletonList from "../Skeletons/CoinItemSkeleton/CoinItemSkeletonList";
+import { Dimensions, TouchableOpacity, View } from "react-native";
+import { IconSymbol } from "../ui/IconSymbol";
+import { colors } from "@/constants/Colors";
+import { ThemedText } from "../ThemedText";
+import { ReloadPage } from "../ui/Error/ReloadPage";
 
 export default function CoinList({
   data,
@@ -25,6 +30,7 @@ export default function CoinList({
       keyExtractor={(item) => item?.id}
       renderItem={renderItem}
       ListHeaderComponent={ListHeaderComponent}
+      ListEmptyComponent={<ReloadPage onPress={onRefresh} />}
       refreshControl={
         onRefresh ? (
           <RefreshControl

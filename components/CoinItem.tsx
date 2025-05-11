@@ -4,6 +4,7 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { IconSymbol } from "./ui/IconSymbol";
 import { getUpOrDownCoinPrice } from "@/functions/getUpOrDownCoinPrice";
 import { Link } from "expo-router";
+import { ThemedText } from "./ThemedText";
 
 export default function CoinItem({ data }: { data?: { item?: Coin } }) {
   const coinData = data?.item;
@@ -30,9 +31,13 @@ export default function CoinItem({ data }: { data?: { item?: Coin } }) {
           <View style={styles.contentContainer}>
             <Image source={{ uri: coinData?.image }} style={styles.image} />
             <View style={{ flexShrink: 1 }}>
-              <Text style={styles.text} numberOfLines={2} adjustsFontSizeToFit>
+              <ThemedText
+                style={styles.text}
+                numberOfLines={2}
+                adjustsFontSizeToFit
+              >
                 {coinData?.name}
-              </Text>
+              </ThemedText>
             </View>
           </View>
           <View style={styles.rightBlockContainer}>
@@ -47,14 +52,17 @@ export default function CoinItem({ data }: { data?: { item?: Coin } }) {
                 name={priceData?.icon}
                 color={priceData?.color}
               />
-              <Text style={{ ...styles.text, fontSize: 10 }} numberOfLines={1}>
+              <ThemedText
+                style={{ ...styles.text, fontSize: 10 }}
+                numberOfLines={1}
+              >
                 {coinData?.price_change_24h.toFixed(5)} $
-              </Text>
+              </ThemedText>
             </View>
             <View style={styles.priceContainer}>
-              <Text style={{ ...styles.text }} numberOfLines={1}>
+              <ThemedText style={{ ...styles.text }} numberOfLines={1}>
                 {coinData?.current_price} $
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </View>
@@ -76,7 +84,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   image: { height: 40, width: 40 },
-  text: { color: colors.contentPrimary, fontSize: 20 },
+  text: { fontSize: 20 },
   contentContainer: {
     alignItems: "center",
     flexDirection: "row",

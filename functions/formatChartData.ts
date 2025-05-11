@@ -25,7 +25,7 @@ export const formatChartData = (prices: [number, number][]) => {
     dayMap.set(label, price);
   }
 
-  const labels = Array.from(dayMap.keys());
+  const labels = Array.from(dayMap.keys()).slice(3);
   const data = Array.from(dayMap.values());
 
   return {
